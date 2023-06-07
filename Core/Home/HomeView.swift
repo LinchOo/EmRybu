@@ -12,16 +12,15 @@ struct HomeView: View {
     // variable of News viewModel here
     
     var body: some View {
-        ZStack {
+        //ZStack {
             VStack{
                 TabView {
                     // FOR Each New's
                     NewsViewCell()
                     Text("123")
                 }
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-                .scrollIndicators(.hidden)
-                .tabViewStyle(.page)
+                //.tabViewStyle(.page)
+                .tabViewStyle(.page(indexDisplayMode: .never))
                 Spacer()
                 VStack{
                     InfoCell()
@@ -29,11 +28,11 @@ struct HomeView: View {
                 Spacer()
             }
         }
-    }
+   // }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        MainView()
     }
 }

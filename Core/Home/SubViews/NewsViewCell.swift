@@ -12,7 +12,7 @@ struct NewsViewCell: View {
     
     
     var body: some View {
-            VStack{
+        VStack(spacing: 30){
                 Image("news1")
                     .resizable()
                     .scaledToFit()
@@ -36,8 +36,9 @@ struct NewsViewCell: View {
                         
                     
                 }
-                .padding(.vertical, 20)
+                //.padding(.vertical, 20)
             }
+            .padding(20)
             .frame(maxWidth: screen.width - 80)
             .sheet(isPresented: $showingBottomSheet) {
                 SheetView()

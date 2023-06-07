@@ -32,17 +32,18 @@ struct MainView: View {
                 SettingsView(isShowSignInView: $isShowSignInView)
                     .tag(TabBarModel.settings)
             }
+            
             CustomTabBar()
         }
         .onAppear{
             self.isShowSignInView = authUser == nil
         }
-        .fullScreenCover(isPresented: $isShowSignInView) {
-            AuthView(showSignInView: $isShowSignInView)
-                .onDisappear{
-                    self.authUser = AuthManager.shared.currentUser
-                }
-        }
+//        .fullScreenCover(isPresented: $isShowSignInView) {
+//            AuthView(showSignInView: $isShowSignInView)
+//                .onDisappear{
+//                    self.authUser = AuthManager.shared.currentUser
+//                }
+//        }
     }
     @ViewBuilder
     func CustomTabBar(_ tint: Color = Color("MainColor"), _ inActiveTint: Color = .cyan) -> some View {

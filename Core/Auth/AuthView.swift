@@ -13,7 +13,38 @@ struct AuthView: View {
     
     var body: some View {
         VStack{
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Image("logo")
+                .resizable()
+                .scaledToFit()
+            Spacer()
+            HStack{
+                Text("Суші!")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(.white))
+                    .padding()
+                    .background{
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color("MainColor"))
+                    }
+                Spacer()
+            }
+            .padding(.horizontal,20)
+            HStack{
+                Spacer()
+                Text("Роли!")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(.white))
+                    .padding()
+                    .background{
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color("MainColor"))
+                    }
+                
+            }
+            .padding(.horizontal,20)
+            Spacer()
             Button{
                 Task{
                     do{
@@ -25,27 +56,25 @@ struct AuthView: View {
                 }
             }label: {
                 HStack{
-                    Image(systemName: "sunset.circle")
-                        .resizable()
-                        .frame(width: 35,height: 35)
-                        .padding(.horizontal)
-                        
-                    Text("Sign in with Google")
+                    Image(systemName: "arrow.turn.down.right")
+                        .imageScale(.large)
+                    Text("Увійти за допомогою Google")
+                        .font(.title3)
+                        .shadow(radius: 0.3)
+                        .fontWeight(.bold)
                         .padding()
                 }
+                .foregroundColor(Color("MainColor"))
             }
             
-            .background {
-                Color(.gray)
-                    .opacity(0.15)
-            }
-            .cornerRadius(15)
+            Spacer()
         }
+        .ignoresSafeArea()
     }
 }
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        AuthView(showSignInView: .constant(false))
     }
 }

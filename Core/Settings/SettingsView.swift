@@ -23,12 +23,12 @@ struct SettingsView: View {
                 .frame(width: 200)
                 .ignoresSafeArea()
                 .shadow(radius: 3)
-            HStack{
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .frame(width: 50,height: 50)
-                Text("Привіт 1faramir1")
-            }
+//            HStack{
+//                Image(systemName: "person.circle")
+//                    .resizable()
+//                    .frame(width: 50,height: 50)
+//                Text("Привіт 1faramir1")
+//            }
             TextField("Заповніть своє ім'я", text: $name)
                 .padding()
             TextField("Заповніть контактний номер телефону", text: $name)
@@ -58,10 +58,7 @@ struct SettingsView: View {
                             .padding()
                     }
                 }
-                
-                
             }
-            
             Button{
                 Task{
                     do{

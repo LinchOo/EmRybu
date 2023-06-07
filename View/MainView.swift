@@ -6,20 +6,13 @@
 //
 
 import SwiftUI
-import FirebaseAuth
-
 
 struct MainView: View {
-    @State var isShowSignInView = false
-    @State var authUser = AuthManager.shared.currentUser
+    @State var showSignInView = false
     
     var body: some View {
-        VStack{
-//            if let ggg = authUser?.email{
-//                Text((authUser?.email)!)
-//                AsyncImage(url: authUser?.photoURL)
-//                    .frame(width: 150,height: 150)
-//            }
+        ZStack{
+            
             TabView{
                 NavigationView{
                    HomeView()
@@ -49,7 +42,7 @@ struct MainView: View {
                     }
                 }
                 NavigationView{
-                    SettingsView(isShowSignInView: $isShowSignInView)
+                    
                 }
                 .tabItem {
                     VStack{
@@ -58,15 +51,14 @@ struct MainView: View {
                     }
                 }
             }
+        
         }
         .onAppear{
-            self.isShowSignInView = authUser == nil
+            let authUser = try? AuthManager.shared.getUser()
+            //self.showSignInView = authUser == nil
         }
-        .fullScreenCover(isPresented: $isShowSignInView) {
-            AuthView(showSignInView: $isShowSignInView)
-                .onDisappear{
-                    self.authUser = AuthManager.shared.currentUser
-                }
+        .fullScreenCover(isPresented: $showSignInView) {
+            AuthView(showSignInView: $showSignInView)
         }
     }
 }

@@ -11,11 +11,11 @@ struct InfoCell: View {
     var body: some View {
         VStack{
             Group{
-                Text( "🕙 10:00 - 21:00 прийом замовлень" )
-                Text( "🕦 11:30 - 23:00 доставка замовлень" )
-                Text( "📞 063-444-11-88" )
-                Text( "📞 050-444-11-88" )
-                Text( "📞 063-678-02-64" )
+                Text( "10:00 - 21:00 прийом замовлень" )
+                Text( "11:30 - 23:00 доставка замовлень" )
+                Text( "063-444-11-88" )
+                Text( "050-444-11-88" )
+                Text( "063-678-02-64" )
             }
             .fontWeight(.bold)
             .foregroundColor(Color("MainColor"))
@@ -25,7 +25,7 @@ struct InfoCell: View {
                 Button{
                     
                 }label: {
-                    Image("facebook")
+                    Image(systemName: "faceid")
                         .resizable()
                         .frame(width: 40,height: 40)
                 }
@@ -33,21 +33,21 @@ struct InfoCell: View {
                 Button{
                     
                 }label: {
-                    Image("telegram")
+                    Image(systemName: "iphone.gen1.circle")
                         .resizable()
                         .frame(width: 40,height: 40)
                 }
                 Button{
                     
                 }label: {
-                    Image("viber")
+                    Image(systemName: "iphone.gen1.circle")
                         .resizable()
                         .frame(width: 40,height: 40)
                 }
                 Button{
                     
                 }label: {
-                    Image("instagram")
+                    Image(systemName: "iphone.gen1.circle")
                         .resizable()
                         .frame(width: 40,height: 40)
                 }

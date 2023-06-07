@@ -10,7 +10,6 @@ import SwiftUI
 struct NewsViewCell: View {
     @State var showingBottomSheet = false
     
-    
     var body: some View {
         VStack(spacing: 30){
                 Image("news1")
@@ -39,7 +38,7 @@ struct NewsViewCell: View {
                 //.padding(.vertical, 20)
             }
             .padding(20)
-            .frame(maxWidth: screen.width - 80)
+            .frame(maxWidth: screen.width - 40)
             .sheet(isPresented: $showingBottomSheet) {
                 SheetView()
                     .presentationDetents([.medium, .large])

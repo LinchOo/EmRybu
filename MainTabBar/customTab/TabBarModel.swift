@@ -24,8 +24,8 @@ case settings = "Налаштування"
         case .settings:
             return "person.2.badge.gearshape"
         }
-        var index: Int {
-            return TabBarModel.allCases.firstIndex(of: self) ?? 0
-        }
+    }
+    var index: Int {
+        return TabBarModel.allCases.firstIndex(of: self) ?? 0
     }
 }

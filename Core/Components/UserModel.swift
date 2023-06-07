@@ -22,7 +22,6 @@ struct UserModel: Identifiable {
         repres["name"] = self.name
         repres["phone"] = self.phone
         repres["address"] = self.address
-        
         return repres
     }
  */

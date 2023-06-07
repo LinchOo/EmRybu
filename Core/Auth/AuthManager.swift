@@ -9,10 +9,10 @@ import Foundation
 import FirebaseAuth
 import GoogleSignIn
 
-struct AuthDataResultModel{
-    let uid: String
-    let email: String?
-    let photoUrl: String?
+class AuthDataResultModel{
+    var uid: String
+    var email: String?
+    var photoUrl: String?
     
     init(user: User) {
         self.uid = user.uid
@@ -21,9 +21,15 @@ struct AuthDataResultModel{
     }
 }
 
-final class AuthManager {
-    
+final class AuthManager: ObservableObject {
+
     static let shared = AuthManager()
+    private let auth = Auth.auth()
+    
+    var currentUser: User? {
+        return auth.currentUser
+    }
+    
     
     @discardableResult
     func singInWithGoogle(tokens: GoogleSignInResultModel) async throws -> AuthDataResultModel {
@@ -33,11 +39,20 @@ final class AuthManager {
     
     func signIn(credential: AuthCredential) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(with: credential)
-        return AuthDataResultModel(user: authDataResult.user)
+        let dataModel = AuthDataResultModel(user: authDataResult.user)
+        
+        if case DataBase.shared.checkUserExist(id: dataModel.uid) = false {
+            try await UserManager.shared.createNewUser(auth: dataModel)
+        }
+        // if not exist add new
+        
+        //
+        
+        return dataModel
     }
     
     func sinOut() throws {
-        try Auth.auth().signOut()
+        try auth.signOut()
     }
     
     func getUser() throws -> AuthDataResultModel {

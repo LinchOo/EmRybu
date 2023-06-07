@@ -6,20 +6,6 @@
 //
 
 import SwiftUI
-//import FirebaseAuth
-//import GoogleSignIn
-//import GoogleSignInSwift
-
-@MainActor
-final class AuthViewModel: ObservableObject{
-    func SignInWithGoogle() async throws {
-        
-        let helper = SignInGoolgeHelper()
-        let tokens = try await helper.signIn()
-        try await AuthManager.shared.singInWithGoogle(tokens: tokens)
-        
-    }
-}
 
 struct AuthView: View {
     @Binding var showSignInView: Bool
